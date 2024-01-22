@@ -19,16 +19,19 @@ body{
     color: black;
     padding: 5px;
     height: 34px;
+    width: 260px;
+    text-align: right;
 }
 
 .row {
     display: flex;
     gap: 10px;
+    justify-content: center;
 }
 
 button {
     background-color: #3e3e3e;
     color: white;
-    width: 40px;
+    width: 60px;
     font-size: inherit;
 }

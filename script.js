@@ -38,7 +38,15 @@ function operate(a, b, operator) {
 };
 
 function updateDisplay() {
-    display.textContent = displayValue;
+    let formattedDisplayValue = displayValue;
+    if (displayValue.length > 16) {
+        formattedDisplayValue = Number(displayValue).toExponential(10).toString();
+    }
+    else {
+        formattedDisplayValue = (Math.round((Number(formattedDisplayValue) * 1e10)) / 1e10).toString();
+        console.log(formattedDisplayValue);
+    }
+    display.textContent = formattedDisplayValue;
 };
 updateDisplay();
 
@@ -50,7 +58,7 @@ function resetVariables() {
 }
 
 numberButtons.forEach(button => button.addEventListener("click", event => {
-    if (displayValue.length < 12) {
+    if (displayValue.length < 10) {
         currentNumber = Number(currentNumber.toString() + event.target.id);
         displayValue = currentNumber.toString();
         updateDisplay();
@@ -77,7 +85,7 @@ operatorButtons.forEach(button => button.addEventListener("click", event => {
 }))
 
 equalsButton.addEventListener("click", event => {
-    displayValue = operate(currentNumber, storedNumber, operator);
+    displayValue = operate(storedNumber, currentNumber, operator);
     updateDisplay();
     resetVariables();
 })
