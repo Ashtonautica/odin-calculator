@@ -44,7 +44,10 @@ function updateDisplay() {
     }
     else {
         formattedDisplayValue = (Math.round((Number(formattedDisplayValue) * 1e10)) / 1e10).toString();
-        console.log(formattedDisplayValue);
+    }
+    if (formattedDisplayValue === "Infinity") {
+        formattedDisplayValue = "NO! >:(";
+        resetVariables();
     }
     display.textContent = formattedDisplayValue;
 };
