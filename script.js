@@ -24,16 +24,16 @@ function divide(a, b) {
     return a / b;
 };
 
-function operate(firstNum, secondNum, operator) {
+function operate(a, b, operator) {
     switch (operator) {
         case "add":
-            return add(firstNum, secondNum);
+            return add(a, b);
         case "subtract":
-            return subtract(firstNum, secondNum);
+            return subtract(a, b);
         case "multiply":
-            return multiply(firstNum, secondNum);
+            return multiply(a, b);
         case "divide":
-            return divide(firstNum, secondNum);
+            return divide(a, b);
     }
 };
 
@@ -41,6 +41,13 @@ function updateDisplay() {
     display.textContent = displayValue;
 };
 updateDisplay();
+
+function resetVariables() {
+    currentNumber = "0";
+    previousNumber = "0";
+    operator = "";
+    displayValue = "0";
+}
 
 numberButtons.forEach(button => button.addEventListener("click", event => {
     if (displayValue.length < 12) {
@@ -52,9 +59,18 @@ numberButtons.forEach(button => button.addEventListener("click", event => {
 }));
 
 clearButton.addEventListener("click", event => {
-    currentNumber = "0";
-    previousNumber = "0";
-    operator = "";
-    displayValue = "0";
+    resetVariables();
     updateDisplay();
 });
+
+operatorButtons.forEach(button => button.addEventListener("click", event => {
+    operator = event.target.id;
+    previousNumber = currentNumber;
+    currentNumber = "0";
+}))
+
+equalsButton.addEventListener("click", event => {
+    displayValue = operate(Number(currentNumber), Number(previousNumber), operator);
+    updateDisplay();
+    resetVariables();
+})
