@@ -1,6 +1,8 @@
 body{
     background-color: #121212;
     font-size: 30px;
+    display: flex;
+    justify-content: center;
 }
 
 #calculator {
