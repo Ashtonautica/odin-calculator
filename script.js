@@ -27,4 +27,17 @@ function operate(firstNum, secondNum, operator) {
     }
 };
 
-let firstNum, secondNum, operator;
+const display = document.querySelector("#display");
+function updateDisplay(input) {
+    display.textContent = input;
+}
+
+let firstNum, secondNum, operator, displayValue = "";
+const numberButtons = document.querySelectorAll("button.number");
+
+numberButtons.forEach(button => button.addEventListener("click", event => {
+    if (displayValue.length < 12) {
+        displayValue += event.target.id;
+        updateDisplay(displayValue);
+    };
+}))
