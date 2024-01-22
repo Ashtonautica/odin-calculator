@@ -1,50 +1,59 @@
-let firstNum, secondNum, operator, displayValue = "";
+let currentNumber = "";
+let previousNumber = "";
+let operator = "";
+let displayValue = "0";
 const display = document.querySelector("#display");
-const numberButtons = document.querySelectorAll("button.number");
+const numberButtons = document.querySelectorAll(".number");
 const clearButton = document.querySelector("#clear");
+const operatorButtons = document.querySelectorAll(".operator");
+const equalsButton = document.querySelector("#equals");
 
 function add(a, b) {
     return a + b;
-}
+};
 
 function subtract(a, b) {
     return a - b;
-}
+};
 
 function multiply(a, b) {
     return a * b;
-}
+};
 
 function divide(a, b) {
     return a / b;
-}
+};
 
 function operate(firstNum, secondNum, operator) {
     switch (operator) {
-        case "+":
+        case "add":
             return add(firstNum, secondNum);
-        case "-":
+        case "subtract":
             return subtract(firstNum, secondNum);
-        case "*":
+        case "multiply":
             return multiply(firstNum, secondNum);
-        case "/":
+        case "divide":
             return divide(firstNum, secondNum);
     }
 };
 
-function updateDisplay(input) {
-    display.textContent = input;
+function updateDisplay() {
+    display.textContent = displayValue;
 };
-updateDisplay(displayValue);
+updateDisplay();
 
 numberButtons.forEach(button => button.addEventListener("click", event => {
     if (displayValue.length < 12) {
-        displayValue += event.target.id;
-        updateDisplay(displayValue);
+        currentNumber += event.target.id;
+        displayValue = currentNumber;
+        updateDisplay();
     };
-}))
+}));
 
 clearButton.addEventListener("click", event => {
-    firstNum, secondNum, operator, displayValue = "";
-    updateDisplay(displayValue);
-})
+    currentNumber = "";
+    previousNumber = "";
+    operator = "";
+    displayValue = "0";
+    updateDisplay();
+});
