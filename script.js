@@ -1,5 +1,5 @@
 let currentNumber = 0;
-let previousNumber = 0;
+let storedNumber = 0;
 let operator = "";
 let displayValue = "0";
 const display = document.querySelector("#display");
@@ -44,7 +44,7 @@ updateDisplay();
 
 function resetVariables() {
     currentNumber = 0;
-    previousNumber = 0;
+    storedNumber = 0;
     operator = "";
     displayValue = "0";
 }
@@ -63,13 +63,21 @@ clearButton.addEventListener("click", event => {
 });
 
 operatorButtons.forEach(button => button.addEventListener("click", event => {
-    operator = event.target.id;
-    previousNumber = currentNumber;
+    if (operator === "") {
+        storedNumber = currentNumber;
+    }
+    else {
+        storedNumber = operate(storedNumber, currentNumber, operator);
+    };
     currentNumber = 0;
+    operator = event.target.id;
+    displayValue = storedNumber.toString();
+    updateDisplay();
+    displayValue = "0";
 }))
 
 equalsButton.addEventListener("click", event => {
-    displayValue = operate(currentNumber, previousNumber, operator);
+    displayValue = operate(currentNumber, storedNumber, operator);
     updateDisplay();
     resetVariables();
 })
