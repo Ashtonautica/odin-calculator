@@ -43,8 +43,8 @@ function updateDisplay() {
 updateDisplay();
 
 function resetVariables() {
-    currentNumber = "0";
-    previousNumber = "0";
+    currentNumber = 0;
+    previousNumber = 0;
     operator = "";
     displayValue = "0";
 }
