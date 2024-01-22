@@ -1,0 +1,31 @@
+body{
+    background-color: #121212;
+    font-size: 30px;
+}
+
+#calculator {
+    background-color: #282828;
+    width: fit-content;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#display {
+    background-color: #8b8b8b;
+    color: black;
+    padding: 5px;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    background-color: #3e3e3e;
+    color: white;
+    width: 40px;
+    font-size: inherit;
+}
