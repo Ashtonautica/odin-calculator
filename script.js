@@ -1,3 +1,8 @@
+let firstNum, secondNum, operator, displayValue = "";
+const display = document.querySelector("#display");
+const numberButtons = document.querySelectorAll("button.number");
+const clearButton = document.querySelector("#clear");
+
 function add(a, b) {
     return a + b;
 }
@@ -27,13 +32,10 @@ function operate(firstNum, secondNum, operator) {
     }
 };
 
-const display = document.querySelector("#display");
 function updateDisplay(input) {
     display.textContent = input;
-}
-
-let firstNum, secondNum, operator, displayValue = "";
-const numberButtons = document.querySelectorAll("button.number");
+};
+updateDisplay(displayValue);
 
 numberButtons.forEach(button => button.addEventListener("click", event => {
     if (displayValue.length < 12) {
@@ -41,3 +43,8 @@ numberButtons.forEach(button => button.addEventListener("click", event => {
         updateDisplay(displayValue);
     };
 }))
+
+clearButton.addEventListener("click", event => {
+    firstNum, secondNum, operator, displayValue = "";
+    updateDisplay(displayValue);
+})
