@@ -1,5 +1,5 @@
-let currentNumber = "";
-let previousNumber = "";
+let currentNumber = "0";
+let previousNumber = "0";
 let operator = "";
 let displayValue = "0";
 const display = document.querySelector("#display");
@@ -44,6 +44,7 @@ updateDisplay();
 
 numberButtons.forEach(button => button.addEventListener("click", event => {
     if (displayValue.length < 12) {
+        if (currentNumber === "0") currentNumber = "";
         currentNumber += event.target.id;
         displayValue = currentNumber;
         updateDisplay();
@@ -51,8 +52,8 @@ numberButtons.forEach(button => button.addEventListener("click", event => {
 }));
 
 clearButton.addEventListener("click", event => {
-    currentNumber = "";
-    previousNumber = "";
+    currentNumber = "0";
+    previousNumber = "0";
     operator = "";
     displayValue = "0";
     updateDisplay();
